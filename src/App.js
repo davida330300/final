@@ -8,11 +8,12 @@ import {Route, Link} from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <h1>Focus.io</h1>
-      <NavBar></NavBar>
-      <Route exact path="./container/Todos.js" component={Todos}/>
-      <Route exact path="./container/Clock.js" component={Clock}/>
-      <Route exact path="./container/Tree.js" component={Tree}/>
+      {/* <h1>Focus.io</h1> */}
+      
+      <Route exact path="/Todos" component={Todos}/>
+      <Route exact path="/Clock" component={Clock}/>
+      <Route exact path="/Tree" component={Tree}/>
+      <NavBar/>
       {/* <Todos></Todos> */}
     </div>
   );
