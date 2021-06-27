@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Frontend Programming
+## 專題介紹
+This project can assist in daily office, which included a Todo check list for scheduling and a Pomodoro Clock for time management. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 使用方法
+We can access the project by clicking the link in "Link" part
+If you want to clone run at local, remember to "npm install react" and use "npm start" to run
 
-## Available Scripts
+In the project, we can redirect to different part of the project by clicking left-handed side bar. The
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The default length of Focus time and Break time on Pomodoro Clock are set to 25 and 5 minutes, however, we can still modified the length of and  by clicking the "+" or "-" button on their box, clicking the reset button will change the clock back to default value. An alarm will remind us when each of the time id off, we can click the "DISMISS ALARM" button to turn off the sound. At last, a counter below will show how many times we have done the cycle of Pomodoro Clock. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 技術
+This is a pure front-end project developed by using React Hook; The state control like useState, useEffect in react hook helps me a lot on data manipulation
 
-### `npm test`
+The "Top" part of the whole project is an exercise of Html/Css technic
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Also, I was interested in one of the presentations in mid-term, so I decided to use "Material UI" to beautify my project layout. For example, the side bar and all the buttons elements are from material UI.
 
-### `npm run build`
+The "audio" tag in html helps me dealing with the alarm sounds  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I use "react-scroll" project to make the redirect operation smoother 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 附錄
+Regarding the deployment of React.js development project on github, we need the help of the "gh-pages"
+For specific methods, please refer to the video on youtube
+https://www.youtube.com/watch?v=F8s4Ng-re0E
+react-scroll:
+https://www.npmjs.com/package/react-scroll
+material-ui:
+https://material-ui.com/zh/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Link 
+Access the project by clicking:
+https://davida330300.github.io/final

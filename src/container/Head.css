@@ -10,7 +10,7 @@ body
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color:#00fff9;
+  background-color:#102626;
 }
 .container{
 
@@ -18,8 +18,8 @@ body
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  -webkit-box-reflect: below 1px linear-gradient(#fff, #0004);
+  background:linear-gradient(#102626, #0008);
+  -webkit-box-reflect: below 0.1px linear-gradient(#0008, #fff);
 }
 
 .container .loader{
@@ -27,7 +27,7 @@ body
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: #fff;
+  background: #0d2323;
   animation: animate 2s linear infinite;
 }
 
@@ -85,4 +85,19 @@ body
   bottom: 20px;
   background: #102626 ;
   border-radius: 50%;
+}
+
+.Head-title{
+  font-size: 100px;
+  text-align: center;
+  color: #fff;
+}
+.Head-sub{
+  font-size: 30px;
+  text-align: center;
+  color: #fff;
+}
+.blank{
+  background: #102626;
+  height:57vh
 }
