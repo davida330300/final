@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
-import { Switch, Route, Link, HashRouter, withRouter } from "react-router-dom"
+import { Switch, Route, HashRouter, withRouter } from "react-router-dom"
 
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
@@ -24,9 +24,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 
+import {Link} from "react-scroll"
 
 const drawerWidth = 240;
 
@@ -93,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NavBar() {
-  const history = useHistory();
+
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -106,10 +105,6 @@ export default function NavBar() {
     setOpen(false);
   };
 
-
-  const toTodos = () => {
-
-  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -132,7 +127,7 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Mini variant drawer
+            Focus.io
           </Typography>
         </Toolbar>
       </AppBar>
@@ -169,28 +164,30 @@ export default function NavBar() {
           ))} */}
             <ListItem button key="Todos">
               <ListItemIcon>
-                <IconButton href="#Todos">
+                <Link to="Todos" class="button" smooth={true} duration={500}>
+                  
                   <PlaylistAddCheckIcon />
                   <ListItemText primary=" Todos" />
-                </IconButton>
+                </Link>
                 
               </ListItemIcon>
 
             </ListItem>
             <ListItem button>
             <ListItemIcon>
-                <IconButton href="#Clock">
+                <Link to="Clock" class="button" smooth={true} duration={500}>
                   <AccessAlarmIcon />
                   <ListItemText primary=" Alarm" />
-                </IconButton>
+                
+                </Link>
               </ListItemIcon>
             </ListItem>
             <ListItem button>
             <ListItemIcon>
-                <IconButton href="#Tree">
+                <Link to="Tree" class="button" smooth={true} duration={500}>
                   <NaturePeopleIcon />
                   <ListItemText primary=" Tree" />
-                </IconButton>
+                </Link>
               </ListItemIcon>
             </ListItem>
           </List>

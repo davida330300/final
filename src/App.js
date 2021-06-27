@@ -5,9 +5,7 @@ import Tree from "./container/Tree"
 import NavBar from "./component/NavBar"
 
 
-function App() {
-
-
+export default function App() {
 
   return (
 
@@ -15,11 +13,10 @@ function App() {
       <h1>Focus.io</h1>
       <Todos></Todos>
       <Clock></Clock>
-      {/* <Tree></Tree> */}
+      <Tree></Tree>
       <NavBar></NavBar>
 
     </div>
   );
 }
 
-export default App;

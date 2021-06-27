@@ -1,3 +1,4 @@
+import { ListItem } from '@material-ui/core';
 import React, { useState } from 'react';
 import './Todo.css'
 
@@ -75,8 +76,9 @@ function Todos() {
 	
 //time to render out everything!!! Notice how we map our the todos by going through each one with .map(). There is the name list of todos, and also a section for adding todos
 	return (
-		<div className="todos">
+		<section className="todos" id="Todos">
 			<div>
+
         <h2 className="SubTitle">Todos</h2>
 			</div>
 			<div className="todo-list"> 
@@ -90,7 +92,7 @@ function Todos() {
 				))}
 				<TodoForm addTodo={addTodo} />
 			</div>
-		</div>
+		</section>
 	)
 
 }

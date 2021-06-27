@@ -1,75 +1,126 @@
-import React, {useState, useEffect, useRef} from 'react'
-// import './styles.css'
-import "./Clock.css"
-const STATUS = {
-  STARTED: 'Started',
-  STOPPED: 'Stopped',
-}
+import React, { useState, useEffect, useRef } from "react"
+import Focus from "../component/Focus"
+import Break from "../component/Break"
+import soundfile from "../image/alarm.mp3"
+import './Clock.css'
+export default function Clock() {
 
-export default function CountdownApp() {
-  const [secondsRemaining, setSecondsRemaining] = useState(getRandomNum())
-  const [status, setStatus] = useState(STATUS.STOPPED)
+    const [focusLength, setFocusLength] = useState(25);
+    const [breakLength, setBreakLength] = useState(5);
+    const [timerLabel, setTimerLabel] = useState('Session');
+    const [secondsLeft, setSecondsLeft] = useState(25 * 60);
+    const [timerRunning, setTimerRunning] = useState(false);
+    const myAudio = useRef();
+    const context = new AudioContext();
 
-  const handleStart = () => {
-    setStatus(STATUS.STARTED)
-  }
-  const handleStop = () => {
-    setStatus(STATUS.STOPPED)
-  }
-  const handleRandom = () => {
-    setStatus(STATUS.STOPPED)
-    setSecondsRemaining(getRandomNum())
-  }
-  useInterval(
-    () => {
-      if (secondsRemaining > 0) {
-        setSecondsRemaining(secondsRemaining - 1)
-      } else {
-        setStatus(STATUS.STOPPED)
+    const increamentFocus = () => {
+      if (!timerRunning && focusLength < 60) {
+        setFocusLength(focusLength + 1)
+        setSecondsLeft((focusLength + 1) * 60);
       }
+    }
+    const decrementFocus = () => {
+      if (!timerRunning && focusLength > 1) {
+        setFocusLength(focusLength - 1)
+        setSecondsLeft((focusLength - 1) * 60);
+      }
+    }
+    const increamentBreak = () => {
+      if (!timerRunning && breakLength < 60) {
+        setBreakLength(breakLength + 1)
+      }
+    }
+    const decrementBreak = () => {
+      if (!timerRunning && breakLength > 1) {
+        setBreakLength(breakLength - 1)
+      }
+    }
+
+    let minutes = Math.floor(secondsLeft / 60);
+    let seconds = secondsLeft % 60;
+
+    useEffect(() => {
+      const handleSwitch = () => {
+        if (timerLabel === 'Focus') {
+          setTimerLabel('Break');
+          setSecondsLeft(breakLength * 60);
+        } else if (timerLabel === 'Break') {
+          setTimerLabel('Session');
+          setSecondsLeft(focusLength * 60);
+        }
+      }
+
+      let countdown = null;
+      if (timerRunning && secondsLeft > 0) {
+        countdown = setInterval(() => {
+          setSecondsLeft(secondsLeft - 1);
+        }, 1000);
+      } else if (timerRunning && secondsLeft === 0) {
+        countdown = setInterval(() => {
+          setSecondsLeft(secondsLeft - 1);
+        }, 1000);
+        myAudio.current.play();
+        handleSwitch();
+      } else {
+        clearInterval(countdown);
+      }
+      return () => clearInterval(countdown);
     },
-    status === STATUS.STARTED ? 1000 : null,
-    // passing null stops the interval
-  )
-  return (
-    <div className="Clock">
-      <h1>React Countdown Demo</h1>
-      <button onClick={handleStart} type="button">
-        Start
-      </button>
-      <button onClick={handleStop} type="button">
-        Stop
-      </button>
-      <button onClick={handleRandom} type="button">
-        Random
-      </button>
-      <div style={{padding: 20}}>{secondsRemaining}</div>
-      <div>Status: {status}</div>
-    </div>
-  )
-}
+      [timerRunning, secondsLeft, timerLabel, breakLength, focusLength, myAudio]);
 
-function getRandomNum() {
-  return Math.floor(Math.random() * 20)
-}
-
-
-function useInterval(callback, delay) {
-  const savedCallback = useRef()
-
-  // Remember the latest callback.
-  useEffect(() => {
-    savedCallback.current = callback
-  }, [callback])
-
-  // Set up the interval.
-  useEffect(() => {
-    function tick() {
-      savedCallback.current()
+    const handleStart = () => {
+      context.resume();
+      setTimerRunning(true);
     }
-    if (delay !== null) {
-      let id = setInterval(tick, delay)
-      return () => clearInterval(id)
+
+    const handleStop = () => {
+      setTimerRunning(false);
     }
-  }, [delay])
+
+    const handleReset = () => {
+      setFocusLength(25);
+      setBreakLength(5);
+      setSecondsLeft(25 * 60);
+      setTimerLabel('Session');
+      setTimerRunning(false);
+      myAudio.current.pause();
+      myAudio.current.currentTime = 0;
+    }
+
+    return (
+      <div className="Clock" id="Clock">
+        <h1>Tomato Clock</h1>
+        <div className="label-container">
+          <Focus focusLength={focusLength} increamentFocus={increamentFocus} decrementFocus={decrementFocus}></Focus>
+          <Break breakLength={breakLength} increamentBreak={increamentBreak} decrementBreak={decrementBreak}></Break>
+        </div>
+        <div className='timer-container'>
+          <h2 id='timer-label'>{timerLabel}</h2>
+          <h3 id='time-left'>
+            {minutes < 10 ? ("0" + minutes).slice(-2) : minutes}:{seconds < 10 ? ("0" + seconds).slice(-2) : seconds}
+          </h3>
+
+          <button
+            id='start_stop'
+            onClick={timerRunning ? handleStop : handleStart}
+          >
+            Start/Stop
+                </button>
+          <button
+            onClick={handleReset}
+            id='reset'
+          >
+            Reset
+                </button>
+        </div>
+        <audio
+          id='beep'
+          ref={myAudio}
+          src={soundfile}
+          type='audio'
+        ></audio>
+
+      </div>
+    )
+  
 }
