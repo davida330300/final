@@ -169,7 +169,7 @@ export default function NavBar() {
           ))} */}
             <ListItem button key="Todos">
               <ListItemIcon>
-                <IconButton href="/Todos">
+                <IconButton href="#Todos">
                   <PlaylistAddCheckIcon />
                   <ListItemText primary=" Todos" />
                 </IconButton>
@@ -179,7 +179,7 @@ export default function NavBar() {
             </ListItem>
             <ListItem button>
             <ListItemIcon>
-                <IconButton href="/Clock">
+                <IconButton href="#Clock">
                   <AccessAlarmIcon />
                   <ListItemText primary=" Alarm" />
                 </IconButton>
@@ -187,7 +187,7 @@ export default function NavBar() {
             </ListItem>
             <ListItem button>
             <ListItemIcon>
-                <IconButton href="/Tree">
+                <IconButton href="#Tree">
                   <NaturePeopleIcon />
                   <ListItemText primary=" Tree" />
                 </IconButton>
