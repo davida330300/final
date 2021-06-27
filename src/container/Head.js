@@ -15,8 +15,7 @@ export default function Head() {
       <h6>-</h6>
       <h6>-</h6>
       <h6>-</h6>
-      <h6>-</h6>
-      <h6>-</h6>
+
       <h1 className="Head-title">Focus.io</h1>
       <h6>-</h6>
       <h6>-</h6>

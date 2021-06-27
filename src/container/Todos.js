@@ -97,8 +97,7 @@ function Todos() {
 				<h6 className="ha">-</h6>
 				<h6 className="ha">-</h6>
 				<h6 className="ha">-</h6>
-				<h6 className="ha">-</h6>
-				<h6 className="ha">-</h6>
+
         <h1 className="title">Todos</h1>
 
 				<h2 className ="Data">{today}</h2>

@@ -25,7 +25,7 @@ I use "react-scroll" project to make the redirect operation smoother
 
 ## 附錄
 Regarding the deployment of React.js development project on github, we need the help of the "gh-pages"
-For specific methods, please refer to the video on youtube
+For specific instructions, please refer to the video on youtube
 https://www.youtube.com/watch?v=F8s4Ng-re0E
 react-scroll:
 https://www.npmjs.com/package/react-scroll
