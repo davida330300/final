@@ -2,25 +2,29 @@ import React, { useState, useEffect, useRef } from "react"
 import Focus from "../component/Focus"
 import Break from "../component/Break"
 import soundfile from "../image/alarm.mp3"
+import { Button } from '@material-ui/core';
 import './Clock.css'
 export default function Clock() {
 
     const [focusLength, setFocusLength] = useState(25);
     const [breakLength, setBreakLength] = useState(5);
-    const [timerLabel, setTimerLabel] = useState('Session');
+    const [timerLabel, setTimerLabel] = useState('Focus');
     const [secondsLeft, setSecondsLeft] = useState(25 * 60);
     const [timerRunning, setTimerRunning] = useState(false);
+    const [cycles, setCycles] = useState(0);
     const myAudio = useRef();
     const context = new AudioContext();
 
     const increamentFocus = () => {
       if (!timerRunning && focusLength < 60) {
+        console.log(focusLength)
         setFocusLength(focusLength + 1)
         setSecondsLeft((focusLength + 1) * 60);
       }
     }
-    const decrementFocus = () => {
+    const decreamentFocus = () => {
       if (!timerRunning && focusLength > 1) {
+
         setFocusLength(focusLength - 1)
         setSecondsLeft((focusLength - 1) * 60);
       }
@@ -30,7 +34,7 @@ export default function Clock() {
         setBreakLength(breakLength + 1)
       }
     }
-    const decrementBreak = () => {
+    const decreamentBreak = () => {
       if (!timerRunning && breakLength > 1) {
         setBreakLength(breakLength - 1)
       }
@@ -44,9 +48,11 @@ export default function Clock() {
         if (timerLabel === 'Focus') {
           setTimerLabel('Break');
           setSecondsLeft(breakLength * 60);
+          
         } else if (timerLabel === 'Break') {
-          setTimerLabel('Session');
+          setTimerLabel('Focus');
           setSecondsLeft(focusLength * 60);
+          setCycles(cycles+1);
         }
       }
 
@@ -81,37 +87,46 @@ export default function Clock() {
       setFocusLength(25);
       setBreakLength(5);
       setSecondsLeft(25 * 60);
-      setTimerLabel('Session');
+      setTimerLabel('Focus');
       setTimerRunning(false);
+      myAudio.current.pause();
+      myAudio.current.currentTime = 0;
+    }
+
+    const dismissAlarm = ()=>{
       myAudio.current.pause();
       myAudio.current.currentTime = 0;
     }
 
     return (
       <div className="Clock" id="Clock">
-        <h1>Tomato Clock</h1>
+        <h1 className="title">Tomato Clock</h1>
+        
         <div className="label-container">
-          <Focus focusLength={focusLength} increamentFocus={increamentFocus} decrementFocus={decrementFocus}></Focus>
-          <Break breakLength={breakLength} increamentBreak={increamentBreak} decrementBreak={decrementBreak}></Break>
+          <Focus focusLength={focusLength} increamentFocus={increamentFocus} decreamentFocus={decreamentFocus}></Focus>
+          <Break breakLength={breakLength} increamentBreak={increamentBreak} decreamentBreak={decreamentBreak}></Break>
         </div>
         <div className='timer-container'>
-          <h2 id='timer-label'>{timerLabel}</h2>
+          <h1 id='timer-label'>{timerLabel} Times!</h1>
           <h3 id='time-left'>
             {minutes < 10 ? ("0" + minutes).slice(-2) : minutes}:{seconds < 10 ? ("0" + seconds).slice(-2) : seconds}
           </h3>
 
-          <button
+          <Button
             id='start_stop'
             onClick={timerRunning ? handleStop : handleStart}
           >
             Start/Stop
-                </button>
-          <button
+          </Button>
+          <Button
             onClick={handleReset}
             id='reset'
           >
             Reset
-                </button>
+          </Button>
+          <Button onClick={dismissAlarm}>
+            Dismiss Alarm
+          </Button>
         </div>
         <audio
           id='beep'
@@ -119,7 +134,7 @@ export default function Clock() {
           src={soundfile}
           type='audio'
         ></audio>
-
+        <h2>Cycles finished : {cycles}, Congratulation!!!</h2>
       </div>
     )
   

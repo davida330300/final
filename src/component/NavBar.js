@@ -2,10 +2,10 @@ import React from 'react'
 import { useHistory } from 'react-router-dom';
 import { Switch, Route, HashRouter, withRouter } from "react-router-dom"
 
-import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 import NaturePeopleIcon from '@material-ui/icons/NaturePeople';
+import HomeIcon from '@material-ui/icons/Home';
 
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -15,7 +15,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
+
 
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -153,15 +153,14 @@ export default function NavBar() {
 
 
           <List>
-            {/* {['Todos', 'Clock', 'Tree'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index === 0 ? <PlaylistAddCheckIcon  href="https://google.com"/> :
-                index === 1 ? <AccessAlarmIcon href="#Clock"/> :
-                  <NaturePeopleIcon  />}</ListItemIcon>
-              <ListItemText primary={text} />
-              <button component={Link} to={'#Todos'}>My button</button>
+          <ListItem button>
+            <ListItemIcon>
+                <Link to="Head" class="button" smooth={true} duration={500}>
+                  <HomeIcon />
+                  <ListItemText primary=" Top" />
+                </Link>
+              </ListItemIcon>
             </ListItem>
-          ))} */}
             <ListItem button key="Todos">
               <ListItemIcon>
                 <Link to="Todos" class="button" smooth={true} duration={500}>
@@ -182,14 +181,7 @@ export default function NavBar() {
                 </Link>
               </ListItemIcon>
             </ListItem>
-            <ListItem button>
-            <ListItemIcon>
-                <Link to="Tree" class="button" smooth={true} duration={500}>
-                  <NaturePeopleIcon />
-                  <ListItemText primary=" Tree" />
-                </Link>
-              </ListItemIcon>
-            </ListItem>
+
           </List>
         </Drawer>
         {/* <Switch>

@@ -3,7 +3,7 @@
   background: rgb(245, 213, 187);
   text-align: center;
   padding: 30px;
-	height: 80vh;
+	height: 100vh;
 
 
 }
@@ -20,16 +20,29 @@
   border-radius: 4px;
   padding: 5px;
   max-width: 400px;
+  font-size: 20px;
 }
 
 .todo {
   background: #fff;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
   padding: 3px 10px;
-  font-size: 12px;
+  font-size: 20px;
   margin-bottom: 6px;
   border-radius: 3px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.form{
+  font-size: 20px;
+}
+
+.title{
+  text-align: center;
+  font-size: 28px;
+}
+.Date{
+  text-align: center;
 }
